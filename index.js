@@ -35,9 +35,10 @@ MongoClient.connect(mongo_url).then(function(db){
   // app.use(errors.handler());
 
   // Start the server
-  var server = app.listen(3030);
+  var port = process.env.PORT || 3030;
+  var server = app.listen(port);
   server.on('listening', function() {
-    console.log('Feathers Message MongoDB service running on 127.0.0.1:3030');
+    console.log('Feathers Message MongoDB service running on ' + port);
   });
 }).catch(function(error){
   console.error(error);
