@@ -31,6 +31,14 @@ MongoClient.connect(mongo_url).then(function(db){
     }
   }));
 
+  app.use('/generaljoostjohans', service({
+    Model: db.collection('generaljoostjohans'),
+    paginate: {
+      default: 100,
+      max: 100
+    }
+  }));
+
   // A basic error handler, just like Express
   // app.use(errors.handler());
 
