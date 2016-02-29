@@ -39,6 +39,13 @@ MongoClient.connect(mongo_url).then(function(db){
     }
   }));
 
+  app.use('/iriseriks', service({
+    Model: db.collection('iriseriks'),
+    paginate: {
+      default: 100,
+      max: 100
+    }
+  }));
   // A basic error handler, just like Express
   // app.use(errors.handler());
 
