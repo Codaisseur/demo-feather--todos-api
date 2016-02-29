@@ -17,8 +17,10 @@ const app = feathers()
   // Turn on URL-encoded parser for REST services
   .use(bodyParser.urlencoded({extended: true}));
 
+const mongo_url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/feathers-demo';
+
   // Connect to your MongoDB instance(s)
-MongoClient.connect('mongodb://localhost:27017/feathers-demo').then(function(db){
+MongoClient.connect(mongo_url).then(function(db){
   // Connect to the db, create and register a Feathers service.
 
   app.use('/todos', service({
